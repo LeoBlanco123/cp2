@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "cp2",
+    "name": "GoDrive",
     "slug": "cp2",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/iconDriver.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.leoblanco123.cp2"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e1973b46-86e5-4f19-a39e-203ca8b0a2f3"
+      }
     }
   }
 }

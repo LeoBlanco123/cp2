@@ -1,20 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MotoristaProvider } from './src/context/MotoristaContext';
+import Home from './src/screens/Home';
+import Motorista from './src/screens/Motorista';
+import Contrato from './src/screens/Contrato';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <MotoristaProvider>
+            <NavigationContainer>
+                <Stack.Navigator
+                    initialRouteName='Home'
+                    screenOptions={{
+                        headerStyle: {
+                            backgroundColor: 'purple'
+                        },
+                        headerTintColor: 'white'
+                    }}
+                >
+                    <Stack.Screen
+                        name='Home'
+                        component={Home}
+                        options={{
+                            title: 'TELA MOTORISTAS'
+                        }}
+                    />
+                    <Stack.Screen
+                        name='Motorista'
+                        component={Motorista}
+                        options={{
+                            title: 'TELA MOTORISTA'
+                        }}
+                    />
+                    <Stack.Screen
+                        name='Contrato'
+                        component={Contrato}
+                        options={{
+                            title: 'TELA CONTRATO'
+                        }}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </MotoristaProvider>
+    );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
