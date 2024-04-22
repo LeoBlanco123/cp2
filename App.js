@@ -5,6 +5,8 @@ import { MotoristaProvider } from './src/context/MotoristaContext';
 import Home from './src/screens/Home';
 import Motorista from './src/screens/Motorista';
 import Contrato from './src/screens/Contrato';
+import Login from "./src/screens/Login";
+import Integrantes from './src/screens/Integrantes';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +15,7 @@ export default function App() {
         <MotoristaProvider>
             <NavigationContainer>
                 <Stack.Navigator
-                    initialRouteName='Home'
+                    initialRouteName='Login'
                     screenOptions={{
                         headerStyle: {
                             backgroundColor: 'purple'
@@ -21,6 +23,14 @@ export default function App() {
                         headerTintColor: 'white'
                     }}
                 >
+                    <Stack.Screen
+                        name='Login'
+                        component={Login}
+                        options={{
+                            title: 'TELA LOGIN'
+                        }}
+                    />
+
                     <Stack.Screen
                         name='Home'
                         component={Home}
@@ -40,6 +50,13 @@ export default function App() {
                         component={Contrato}
                         options={{
                             title: 'TELA CONTRATO'
+                        }}
+                    />
+                    <Stack.Screen
+                        name='Integrantes'
+                        component={Integrantes}
+                        options={{
+                            title: 'TELA INTEGRANTES'
                         }}
                     />
                 </Stack.Navigator>

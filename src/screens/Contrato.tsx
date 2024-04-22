@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function ContratarMotorista(props) {
-    const [nome, setNome] = useState('');
     const [endereco, setEndereco] = useState('');
     const [destino, setDestino] = useState('');
 
     const contratarMotorista = () => {
-        if (!nome || !endereco || !destino) {
+        if (!endereco || !destino) {
             alert('Por favor, preencha todos os campos.');
             return;
         }
@@ -22,12 +21,6 @@ export default function ContratarMotorista(props) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.label}>Nome:</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={text => setNome(text)}
-                value={nome}
-            />
             <Text style={styles.label}>Endereço de partida:</Text>
             <TextInput
                 style={styles.input}

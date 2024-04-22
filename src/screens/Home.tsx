@@ -1,15 +1,23 @@
 import React, { useContext } from "react";
-import { FlatList, View } from "react-native";
-import { ListItem, Avatar, Button, Icon} from "@rneui/base";
+import { FlatList, View, ScrollView } from "react-native";
+import { ListItem, Avatar, Button, Icon } from "@rneui/base";
 import MotoristaContext from "../context/MotoristaContext";
 
 export default function TelaLista({ navigation }) {
     const { DadosMotorista } = useContext(MotoristaContext);
 
+    function irParaMotorista(item) {
+        navigation.navigate("Motorista", item);
+    }
+
+    function irParaIntegrantes() {
+        navigation.navigate("Integrantes");
+    }
+
     function getMotorista({ item }) {
         return (
             <ListItem
-                onPress={() => navigation.navigate("Motorista", item)}
+                onPress={() => irParaMotorista(item)}
                 bottomDivider
             >
                 <Avatar source={{ uri: item.fotoPerfil }} rounded size={60} />
@@ -21,17 +29,22 @@ export default function TelaLista({ navigation }) {
                     <Button
                         icon={<Icon name='add' color='blue' />}
                         type="clear"
-                        onPress={() => navigation.navigate("Motorista", item)} />
+                        onPress={() => irParaMotorista(item)} />
                 </ListItem.Content>
             </ListItem>
         );
     }
 
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <FlatList
                 data={DadosMotorista}
                 renderItem={getMotorista}
+                ListFooterComponent={
+                    <View style={{ marginVertical: 20, alignItems: 'center' }}>
+                        <Button onPress={irParaIntegrantes} title="Integrantes" buttonStyle={{ backgroundColor: 'purple', width: 200 }} />
+                    </View>
+                }
             />
         </View>
     );
